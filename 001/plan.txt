@@ -86,9 +86,17 @@ WHERE    условие;
 строки в кавычках:  'Москва'
 числа без кавычек:  20000
 
+SELECT *
+FROM customers
+WHERE city = 'Казань';
+
+SELECT *
+FROM orders
+WHERE customer_id = 5;
+
 «WHERE — это как фильтр в Excel. Оставляет только строки, где условие истинно».
 
-«Строки — в одинарных кавычках. Числа — без. Забудешь кавычки — SQLite скажет no such column».
+«Строки — в одинарных кавычках. Числа — без. Забудете кавычки — SQLite скажет no such column».
 
 ЗАДАЧИ:
 1: Показать всё о клиентах из Москвы
@@ -104,6 +112,11 @@ WHERE    условие;
 ORDER BY  столбец        -- по возрастанию
 ORDER BY  столбец DESC   -- по убыванию
 LIMIT     N              -- только первые N строк
+
+SELECT *
+FROM customers
+ORDER BY city
+LIMIT 5;
 
 «ORDER BY — сортировка в Excel. ASC — по возрастанию (по умолчанию), DESC — по убыванию».
 
@@ -125,6 +138,10 @@ LIMIT     N              -- только первые N строк
   product →  в orders
 
   склеить по customer_id
+
+SELECT *
+FROM customers
+JOIN orders ON orders.customer_id = customers.customer_id;
 
 #########################################
 #########           7           #########
